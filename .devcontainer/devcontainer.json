@@ -5,8 +5,15 @@
   "postCreateCommand": "script/setup",
   "postStartCommand": "script/bootstrap",
   "containerEnv": { "DEVCONTAINER": "1" },
-  "appPort": ["8123:8123"],
+  "appPort": ["8123:8123", "80:80", "9100:9100"],
   "runArgs": ["-e", "GIT_EDITOR=code --wait"],
+  "mounts": [
+    // Custom configuration directory
+    "source=C:\\repos\\wavinsentio-ha\\custom_components\\wavinsentio,target=${containerWorkspaceFolder}/config/custom_components/wavinsentio,type=bind",
+    "source=C:\\repos\\mertik-ha\\custom_components\\mertik,target=${containerWorkspaceFolder}/config/custom_components/mertik,type=bind",
+    "source=C:\\repos\\dagen-ha\\custom_components\\dagen,target=${containerWorkspaceFolder}/config/custom_components/dagen,type=bind",
+    "source=C:\\repos\\beolink-ha\\custom_components\\beolink,target=${containerWorkspaceFolder}/config/custom_components/beolink,type=bind"
+  ],
   "extensions": [
     "ms-python.vscode-pylance",
     "visualstudioexptteam.vscodeintellicode",
